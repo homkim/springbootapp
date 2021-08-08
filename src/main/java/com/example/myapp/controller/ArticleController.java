@@ -8,6 +8,7 @@ import com.example.myapp.repository.ArticleRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import lombok.RequiredArgsConstructor;
@@ -62,5 +63,25 @@ public class ArticleController {
         log.info(saved.toString() + " : 잘 저장되었습니다!!");
 
         return "redirect:/articles";
+    }
+
+    @GetMapping("/articles/{id}")
+    public String show(@PathVariable Long id, // url의 {id} 값을 변수화!
+                       Model model) {
+        // id를 통해 Article을 가져옴!
+        Article article = articleRepository.findById(id).orElse(null);
+        // article을 뷰 페이지로 전달
+        model.addAttribute("article", article);
+        return "articles/show";
+    }
+
+    @GetMapping("/articles/edit/{id}")
+    public String edit(@PathVariable Long id,
+                       Model model) {
+        Article target = articleRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("해당 Article이 없습니다.")
+        );
+        model.addAttribute("article", target);
+        return "articles/edit";
     }
 }

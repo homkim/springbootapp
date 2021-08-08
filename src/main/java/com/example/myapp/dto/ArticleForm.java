@@ -2,26 +2,34 @@ package com.example.myapp.dto;
 
 import com.example.myapp.entity.Article;
 
-// @Data 하나로 통합
-import lombok.Data;
+import lombok.Data;   // @Data 하나로 통합
+import lombok.NoArgsConstructor;
 
 // import lombok.AllArgsConstructor;
 // import lombok.ToString;
 
-// @AllArgsConstructor
+@NoArgsConstructor
 // @ToString
+
 @Data  // 생성자(디폴트 All), getter, setter, toString 알아서 다 만들어줌
 public class ArticleForm {
+    private Long id;   //id 필드 추가
     private String title;
     private String content;
     
     // @AllArgsConstructor 으로 생성자 리펙토링
-    /*
-    public ArticleForm(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
-    */
+    
+    // public ArticleForm(String title, String content) {
+    //     this.title = title;
+    //     this.content = content;
+    // }
+
+    // 생성자: entity 객체를 form으로 변환.
+    public ArticleForm(Article entity) {
+        this.id = entity.getId();
+        this.title = entity.getTitle();
+        this.content = entity.getContent();
+    }    
 
     // @ToString 으로 리펙토링
     /*
@@ -41,6 +49,6 @@ public class ArticleForm {
                 .content(content)
                 .build();
     }
-    
+
     
 }
