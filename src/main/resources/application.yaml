@@ -1,0 +1,14 @@
+# application.properties -> application.yaml로 변경
+# spring.h2.console.enabled=true
+
+spring:
+    # DB 설정
+    h2:
+        console:
+            enabled: true
+            path: /testdb
+    datasource:
+        driver-class-name: org.h2.Driver
+        url: jdbc:h2:file:./testdb;AUTO_SERVER=TRUE
+        username: sa
+        password:

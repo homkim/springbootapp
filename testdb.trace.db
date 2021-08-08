@@ -1,0 +1,25 @@
+2021-08-08 19:47:59 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE ARTICLE[*](
+ID LONG PRIMARY KEY, 
+TITLE VARCHAR(100),
+CONTENT VARCHAR2(4096)
+)"; expected "OR, FORCE, VIEW, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, DATATYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL, GLOBAL, TEMP, TEMPORARY, TABLE, SYNONYM, PRIMARY, UNIQUE, HASH, SPATIAL, INDEX"; SQL statement:
+CREATE ARTICLE(
+id Long PRIMARY KEY, 
+title VARCHAR(100),
+content varchar2(4096)
+) [42001-200]
+2021-08-08 19:51:49 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ARTICLE" already exists; SQL statement:
+CREATE TABLE article(
+id Long PRIMARY KEY auto_increment, 
+title VARCHAR(100),
+content varchar2(4096)
+) [42101-200]
+2021-08-08 19:51:53 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ARTICLE" already exists; SQL statement:
+CREATE TABLE article(
+id Long PRIMARY KEY auto_increment, 
+title VARCHAR(100),
+content varchar(4096)
+) [42101-200]
