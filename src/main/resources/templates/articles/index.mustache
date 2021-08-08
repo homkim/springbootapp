@@ -1,18 +1,20 @@
 {{>layouts/header}}
 
 <!-- jumbotron -->
-<div class="jumbotron">
+<div class="container">
   <h1>Article 목록</h1>
   <hr>
   <p>articles/index.mustache</p>
   <a href="/articles/new" class="btn btn-primary">글쓰기</a>
 </div>
 <!-- articles table -->
+<div class="container">
 <table class="table table-hover">
   <thead>
     <tr>
       <th>#</th>
       <th>제목</th>
+      <th>내용</th>
     </tr>
   </thead>
   <tbody>
@@ -21,9 +23,10 @@
       <tr>
         <td>{{id}}</td> <!-- id 출력 -->
         <td>{{title}}</td> <!-- title 출력 -->
+        <td>{{content}}</td>
       </tr>
     {{/articles}}
   </tbody>
 </table>
-
+</div>
 {{>layouts/footer}}
